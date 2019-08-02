@@ -18,15 +18,15 @@
 
 - [座位JSON结构解析](https://github.com/zenghao0219/seat-select/tree/master/public/mock)
 
+#### 点个Star呗
+if this project is useful to you :D , Please star this project~
 
-> if this project is useful to you :D , Please star this project~
->
-> 如果这个项目对你有帮助 :D 请点个star吧~
->
-> 请使用微信扫描二维码查看demo
->
-> <img src="https://github.com/zenghao0219/files-store/blob/master/seats/gh_29060d58fbac_430.jpg?raw=true" width="200" hegiht="300"/>
->
+如果这个项目对你有帮助 :D 请点个star吧~
+
+请使用`微信扫描`二维码查看demo
+
+<img src="https://github.com/zenghao0219/files-store/blob/master/seats/gh_29060d58fbac_430.jpg?raw=true" width="200" hegiht="300"/>
+
 > 此次项目是基于vue编写的类似淘票票和猫眼的电影`移动端`锁座页面,经过超过百个影厅的测试,其中包含功能
 >
 > - 座位图生成
