@@ -1,44 +1,55 @@
 /*
 *@zenghao 2018-06-12
 */
-page{
-  background: #EEEEEE;
+
+page {
+  background: #eee;
 }
+
 /*
 *上方影片名称样式
 */
-.movieName{
+
+.movieName {
   font-size: 35rpx;
   font-weight: 600;
   margin-bottom: 10rpx;
 }
+
 /*
 *上方排期信息样式
 */
-.planDetail{
-  color: #AAAAAA;
+
+.planDetail {
+  color: #aaa;
   font-size: 27rpx;
 }
+
 /*
 *上方影片,排期信息的父级
 */
-.info{
+
+.info {
   width: 100%;
   height: 80rpx;
-  background: #FFFFFF;
-  border-top: 1rpx solid #EEEEEE;
-  border-bottom: 1rpx solid #EEEEEE;
-  padding:30rpx 30rpx; 
+  background: #fff;
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+  padding: 30rpx 30rpx;
+  position: relative;
 }
-.seatDemosBack{
-  background: #FFFFFF;
+
+.seatDemosBack {
+  background: #fff;
 }
+
 /*
 *座位样式的父级
 */
-.seatDemos{
-  color: #AAAAAA;
-  background: #FFFFFF;
+
+.seatDemos {
+  color: #aaa;
+  background: #fff;
   position: relative;
   margin: 0 auto;
   width: 80%;
@@ -46,88 +57,105 @@ page{
   font-size: 25rpx;
   height: 70rpx;
   display: flex;
-  flex-direction:row;
-  justify-content:space-between;
-  align-items:center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-.areaSeatDemos{
+
+.areaSeatDemos {
   width: 100%;
   height: 80rpx;
-  position:fixed;
-  bottom:100rpx;
+  position: fixed;
+  bottom: 100rpx;
 }
-.seatDemosScroll{
-  color: #AAAAAA;
-  background:#FFFFFF;
-  width:100%;
+
+.seatDemosScroll {
+  color: #aaa;
+  background: #fff;
+  width: 100%;
   height: 100%;
   font-size: 25rpx;
-  white-space:nowrap;
+  white-space: nowrap;
 }
-.seatDemosScrollItem{
+
+.seatDemosScrollItem {
   height: 90rpx;
   white-space: nowrap;
-  overflow:hidden;
-  margin-left:15px;
-  display:inline-block;
+  overflow: hidden;
+  margin-left: 15px;
+  display: inline-block;
   align-items: center;
-  margin-top:25rpx;
+  margin-top: 25rpx;
 }
-.seatDemosScrollItem.Itemnormal image{
+
+.seatDemosScrollItem.Itemnormal image {
   margin-right: 10rpx;
   width: 40rpx;
-  height: 40rpx;  
-  vertical-align: -30%
+  height: 40rpx;
+  vertical-align: -30%;
 }
+
 /*
 *情侣座位的图片样式
 */
-.seatDemosScrollItem.Itemlove image{
+
+.seatDemosScrollItem.Itemlove image {
   margin: 0;
   width: 40rpx;
-  height: 40rpx;  
-  vertical-align: -30%
+  height: 40rpx;
+  vertical-align: -30%;
 }
+
 /*
 *情侣座位的字体样式
 */
-.seatDemosScrollItem.Itemlove text{
+
+.seatDemosScrollItem.Itemlove text {
   margin-left: 10rpx;
 }
-.seatDemo image{
-width: 45rpx;  
-height: 45rpx;
+
+.seatDemo image {
+  width: 45rpx;
+  height: 45rpx;
 }
+
 /*
 *普通座位的图片样式
 */
-.seatDemoItem{
-  white-space : nowrap;
-  width: 45rpx;  
-  display:block;
+
+.seatDemoItem {
+  white-space: nowrap;
+  width: 45rpx;
+  display: block;
 }
+
 /*
 *情侣座位的图片样式
 */
-.seatDemo{
-  display:flex;
-  align-items:center;
+
+.seatDemo {
+  display: flex;
+  align-items: center;
 }
+
 /*
 *情侣座位的字体样式
 */
-.loveSeatDemo text{
+
+.loveSeatDemo text {
   margin-left: 10rpx;
 }
+
 /*
 *影厅图上方显示影厅名字区域
 */
-.hallName{
-  width:200rpx;  
-  height:0;  
-  border-top: 40rpx solid #CCCCCC;  
-  border-right: 20rpx solid transparent;  
-  border-left:20rpx solid transparent;  
+
+.hallName {
+  width: 200rpx;
+  height: 0;
+  border-top: 40rpx solid #ccc;
+  border-right: 20rpx solid transparent;
+  border-left: 20rpx solid transparent;
   line-height: 30rpx;
   color: white;
   position: absolute;
@@ -137,119 +165,146 @@ height: 45rpx;
   transform: translateX(-50%);
   white-space: nowrap;
 }
+
 /*
 *影厅图上方显示影厅名字区域字体样式
 */
-.hallName text{
+
+.hallName text {
   font-size: 20rpx;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: -35rpx;
 }
+
 /*
 *所有座位的区域
 */
-.seatArea{
+
+.seatArea {
   margin: 0 auto;
   font-size: 10rpx;
   position: relative;
 }
+
 /*
 *中轴线
 */
-.alignLine{
+
+.alignLine {
   position: absolute;
   left: 50%;
-  height: 100%; 
-  border-left: 1px dashed #AAAAAA; 
+  height: 100%;
+  border-left: 1px dashed #aaa;
   transform: translateX(-100%);
 }
+
 /*
 *选座区域普通座位的图片样式
 */
-.normal{
-  position:relative;
+
+.normal {
+  position: relative;
   /* margin: 10rpx; */
   width: 100%;
   height: 100%;
 }
+
 /*
 *选座区域情侣座位的图片样式
 */
-.LoveSeat{
-  position:relative;
+
+.LoveSeat {
+  position: relative;
   /* margin: 10rpx 0;  */
   width: 70rpx;
-  height: 70rpx
+  height: 70rpx;
 }
+
 /*
 *所有座位的图片样式下方透明可点击区域
 */
-.seatTap{
-  position:absolute;
+
+.seatTap {
+  position: absolute;
 }
+
 /*
 *情侣座位的图片样式下方透明可点击区域
 */
-.LoveSeatTap{
-  position:absolute;
+
+.LoveSeatTap {
+  position: absolute;
   top: 0;
   width: 70rpx;
-  height: 70rpx
+  height: 70rpx;
 }
+
 /*
 * 座位图限制区域
 */
+
 movable-area {
-  background: #EEEEEE;
+  background: #eee;
   overflow: hidden;
 }
+
 /*
 * 座位图可移动区域(座位图)
 */
+
 .movableOne {
   box-sizing: border-box;
   padding: 100rpx 60rpx;
   color: #fff;
 }
+
 /*
 * 座位图可移动区域(左边座位排号栏)
 */
+
 .movableTwo {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 1400rpx;
   width: 30rpx;
-  padding: 100rpx 0 ;
+  padding: 100rpx 0;
   color: #fff;
 }
+
 /*
 * (左边座位排号栏整体)
 */
-.seatTool{
+
+.seatTool {
   width: 30rpx;
   padding: 100rpx 0;
   opacity: 0.5;
 }
-.seatToolArea{
+
+.seatToolArea {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 50rpx;
 }
+
 /*
 * (左边座位排号栏每一个块)
 */
-.seatTag{
+
+.seatTag {
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
 }
+
 /*
 *页面最下方确认选座区域
 */
-.orderComfirm{
-  background: #FFFFFF;
+
+.orderComfirm {
+  background: #fff;
   position: fixed;
   display: flex;
   bottom: 0rpx;
@@ -257,119 +312,140 @@ movable-area {
   line-height: 100rpx;
   z-index: 3;
 }
+
 /*
 *页面最下方价格区域
 */
-.orderPrice{
+
+.orderPrice {
   text-indent: 30rpx;
   color: black;
   height: 100rpx;
   width: 60%;
 }
+
 /*
 *页面最下方价格字体样式
 */
-.orderPrice text{
+
+.orderPrice text {
   color: red;
 }
+
 /*
 *页面最下方确认选座区域渐变色
 */
-.comfirm{
-  font-weight:900; 
+
+.comfirm {
+  font-weight: 900;
   text-align: center;
   color: white;
   width: 100%;
-  background: #DC3022; 
+  background: linear-gradient(to right, #C26DFE, #6F50F5); 
   height: 100rpx;
 }
+
 /*
 *用户选中的座位区域
 */
-.selectSeatInfo{
-  background: #FFFFFF;
+
+.selectSeatInfo {
+  background: #fff;
   position: fixed;
   bottom: 100rpx;
   height: 80rpx;
   width: 100%;
   padding: 10rpx 0;
 }
+
 /*
 *用户选中的座位详情滑块
 */
-.scrollSeat{
+
+.scrollSeat {
   height: 90rpx;
   white-space: nowrap;
 }
+
 /*
 *每块用户选中的座位详情
 */
-.scrollItem{
-  border: 1rpx solid #BBBBBB;
-  border-radius:10rpx; 
+
+.scrollItem {
+  border: 1rpx solid #bbb;
+  border-radius: 10rpx;
   width: 180rpx;
   display: inline-block;
-  margin-left:20rpx; 
+  margin-left: 20rpx;
   position: relative;
 }
+
 /*
 * 快速选座模块
 */
-.quickItem{
-  border: 1rpx solid #BBBBBB;
-  color: #AAAAAA;
+
+.quickItem {
+  border: 1rpx solid #bbb;
+  color: #aaa;
   font-size: 28rpx;
-  border-radius:10rpx; 
+  border-radius: 10rpx;
   width: 160rpx;
   height: 75rpx;
   line-height: 75rpx;
   text-align: center;
   display: inline-block;
-  margin-left:20rpx; 
+  margin-left: 20rpx;
   position: relative;
 }
+
 /*
 *每块用户选中的座位详情上方文字
 */
-.scrollTextTop{
-  color: #555555;
+
+.scrollTextTop {
+  color: #555;
   text-indent: 30rpx;
   line-height: 25rpx;
-  font-size:26rpx; 
+  font-size: 26rpx;
   height: 25rpx;
-  margin-top:10rpx;
+  margin-top: 10rpx;
 }
+
 /*
 *每块用户选中的座位详情下方文字
 */
-.scrollTextBottom{
+
+.scrollTextBottom {
   font-weight: 600;
-  font-size:26rpx; 
-  color: #FF005A;
+  font-size: 26rpx;
+  color: #ff005a;
   text-indent: 40rpx;
   height: 25rpx;
   line-height: 25rpx;
-  margin:10rpx 0 ;
+  margin: 10rpx 0;
 }
+
 /*
 *每块用户选中的座位详情关闭按钮
 */
-.scrollItem image{
+
+.scrollItem image {
   position: absolute;
   z-index: 2;
   width: 30rpx;
   height: 30rpx;
   right: 10rpx;
   top: 50%;
-  transform:translateY(-50%); 
+  transform: translateY(-50%);
 }
-.seatAreaTip{
-  position:relative;
+
+.seatAreaTip {
+  position: relative;
   width: 750rpx;
   height: 50rpx;
   line-height: 50rpx;
   text-align: center;
   font-size: 16rpx;
   color: rgba(0, 0, 0, 0.1);
-  border-top: 1rpx dashed rgba(0, 0, 0, 0.1); 
+  border-top: 1rpx dashed rgba(0, 0, 0, 0.1);
 }

@@ -1,12 +1,14 @@
 {
   "pages": [
-    "pages/seat-select/seat-select"
+    "pages/seat-select/seat-select",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "head-view":"/components/head"
   },
   "sitemapLocation": "sitemap.json"
 }

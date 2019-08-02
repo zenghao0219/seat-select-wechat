@@ -1,0 +1,421 @@
+/* ==================
+        初始化
+ ==================== */
+
+page {
+  /* Color 可以自定义相关配色 *//* var属性兼容性 --> https://www.caniuse.com/#feat=css-variables *//* 标准色 */
+  --red: #e54d42;
+  --orange: #f37b1d;
+  --yellow: #fbbd08;
+  --olive: #8dc63f;
+  --green: #39b54a;
+  --cyan: #1cbbb4;
+  --blue: #0081ff;
+  --purple: #6739b6;
+  --mauve: #9c26b0;
+  --pink: #e03997;
+  --brown: #a5673f;
+  --grey: #8799a3;
+  --black: #333;
+  --darkGray: #666;
+  --gray: #aaa;
+  --ghostWhite: #f1f1f1;
+  --white: #fff;
+  /* 浅色 */
+  --redLight: #fadbd9;
+  --orangeLight: #fde6d2;
+  --yellowLight: #fef2ce;
+  --oliveLight: #e8f4d9;
+  --greenLight: #d7f0db;
+  --cyanLight: #d2f1f0;
+  --blueLight: #cce6ff;
+  --purpleLight: #e1d7f0;
+  --mauveLight: #ebd4ef;
+  --pinkLight: #f9d7ea;
+  --brownLight: #ede1d9;
+  --greyLight: #e7ebed;
+  /* 渐变色 */
+  --gradualRed: linear-gradient(45deg, #f43f3b, #ec008c);
+  --gradualOrange: linear-gradient(45deg, #ff9700, #ed1c24);
+  --gradualGreen: linear-gradient(45deg, #39b54a, #8dc63f);
+  --gradualPurple: linear-gradient(45deg, #9000ff, #5e00ff);
+  --gradualPink: linear-gradient(45deg, #ec008c, #6739b6);
+  --gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
+  --gradualPinks: linear-gradient(to right, #c26dfe, #6f50f5);
+  /* 阴影透明色 */
+  --ShadowSize: 6rpx 6rpx 8rpx;
+  --redShadow: rgba(204, 69, 59, 0.2);
+  --orangeShadow: rgba(217, 109, 26, 0.2);
+  --yellowShadow: rgba(224, 170, 7, 0.2);
+  --oliveShadow: rgba(124, 173, 55, 0.2);
+  --greenShadow: rgba(48, 156, 63, 0.2);
+  --cyanShadow: rgba(28, 187, 180, 0.2);
+  --blueShadow: rgba(0, 102, 204, 0.2);
+  --purpleShadow: rgba(88, 48, 156, 0.2);
+  --mauveShadow: rgba(133, 33, 150, 0.2);
+  --pinkShadow: rgba(199, 50, 134, 0.2);
+  --brownShadow: rgba(140, 88, 53, 0.2);
+  --greyShadow: rgba(114, 130, 138, 0.2);
+  --grayShadow: rgba(114, 130, 138, 0.2);
+  --blackShadow: rgba(26, 26, 26, 0.2);
+  background-color: var(--ghostWhite);
+  font-size: 28rpx;
+  color: var(--black);
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+}
+
+/* ==================
+          按钮
+ ==================== */
+
+.cu-btn {
+  position: relative;
+  border: 0rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  height: 64rpx;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  overflow: visible;
+  margin-left: initial;
+  transform: translate(0rpx, 0rpx);
+  margin-right: initial;
+}
+
+.cu-btn::after {
+  display: none;
+}
+
+.cu-btn:not([class*="bg-"]) {
+  background-color: #f0f0f0;
+}
+
+.cu-btn[class*="line"] {
+  background-color: transparent;
+}
+
+.cu-btn[class*="line"]::after {
+  content: " ";
+  display: block;
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1rpx solid currentColor;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 12rpx;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cu-btn.round[class*="line"]::after {
+  border-radius: 1000rpx;
+}
+
+.cu-btn[class*="lines"]::after {
+  border: 6rpx solid currentColor;
+}
+
+.cu-btn[class*="bg-"]::after {
+  display: none;
+}
+
+.cu-btn.sm {
+  padding: 0 20rpx;
+  font-size: 20rpx;
+  height: 48rpx;
+}
+
+.cu-btn.lg {
+  padding: 0 40rpx;
+  font-size: 32rpx;
+  height: 80rpx;
+}
+
+.cu-btn.icon.sm {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.cu-btn.icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 500rpx;
+  padding: 0;
+}
+
+.cu-btn.shadow-blur::before {
+  top: 4rpx;
+  left: 4rpx;
+  filter: blur(6rpx);
+  opacity: 0.6;
+}
+
+.cu-btn.button-hover {
+  transform: translate(1rpx, 1rpx);
+}
+
+.cu-btn.block {
+  display: flex;
+}
+
+.cu-btn[disabled] {
+  opacity: 0.6;
+  color: var(--white);
+}
+
+.bg-gradual-orange {
+  background-image: var(--gradualOrange);
+  color: var(--white);
+}
+
+.bg-gradual-pinks {
+  background-image: var(--gradualPinks);
+  color: var(--white);
+}
+
+.shadow-blur {
+  position: relative;
+}
+
+.shadow-blur::before {
+  content: "";
+  display: block;
+  background: inherit;
+  filter: blur(10rpx);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 10rpx;
+  left: 10rpx;
+  z-index: -1;
+  opacity: 0.4;
+  transform-origin: 0 0;
+  border-radius: inherit;
+  transform: scale(1, 1);
+}
+
+.round {
+  border-radius: 5000rpx;
+}
+
+.bg-red {
+  background-color: var(--red);
+  color: var(--white);
+}
+/* ==================
+          文本
+ ==================== */
+
+.text-xs {
+	font-size: 20rpx;
+}
+
+.text-sm {
+	font-size: 24rpx;
+}
+
+.text-df {
+	font-size: 28rpx;
+}
+
+.text-lg {
+	font-size: 32rpx;
+}
+
+.text-xl {
+	font-size: 36rpx;
+}
+
+.text-xxl {
+	font-size: 44rpx;
+}
+
+.text-sl {
+	font-size: 80rpx;
+}
+
+.text-xsl {
+	font-size: 120rpx;
+}
+
+.text-Abc {
+	text-transform: Capitalize;
+}
+
+.text-ABC {
+	text-transform: Uppercase;
+}
+
+.text-abc {
+	text-transform: Lowercase;
+}
+
+.text-price::before {
+	content: "¥";
+	font-size: 80%;
+	margin-right: 4rpx;
+}
+
+.text-cut {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-content {
+	line-height: 1.6;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-red,
+.line-red,
+.lines-red {
+	color: var(--red);
+}
+
+.text-orange,
+.line-orange,
+.lines-orange {
+	color: var(--orange);
+}
+
+.text-yellow,
+.line-yellow,
+.lines-yellow {
+	color: var(--yellow);
+}
+
+.text-olive,
+.line-olive,
+.lines-olive {
+	color: var(--olive);
+}
+
+.text-green,
+.line-green,
+.lines-green {
+	color: var(--green);
+}
+
+.text-cyan,
+.line-cyan,
+.lines-cyan {
+	color: var(--cyan);
+}
+
+.text-blue,
+.line-blue,
+.lines-blue {
+	color: var(--blue);
+}
+
+.text-purple,
+.line-purple,
+.lines-purple {
+	color: var(--purple);
+}
+
+.text-mauve,
+.line-mauve,
+.lines-mauve {
+	color: var(--mauve);
+}
+
+.text-pink,
+.line-pink,
+.lines-pink {
+	color: var(--pink);
+}
+
+.text-brown,
+.line-brown,
+.lines-brown {
+	color: var(--brown);
+}
+
+.text-grey,
+.line-grey,
+.lines-grey {
+	color: var(--grey);
+}
+
+.text-gray,
+.line-gray,
+.lines-gray {
+	color: var(--gray);
+}
+
+.text-black,
+.line-black,
+.lines-black {
+	color: var(--black);
+}
+
+.text-white,
+.line-white,
+.lines-white {
+	color: var(--white);
+}
+/* -- 阴影 -- */
+
+.shadow[class*='white'] {
+	--ShadowSize: 0 1rpx 6rpx;
+}
+
+.shadow-lg {
+	--ShadowSize: 0rpx 40rpx 100rpx 0rpx;
+}
+
+.shadow-warp {
+	position: relative;
+	box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.shadow-warp:before,
+.shadow-warp:after {
+	position: absolute;
+	content: "";
+	top: 20rpx;
+	bottom: 30rpx;
+	left: 20rpx;
+	width: 50%;
+	box-shadow: 0 30rpx 20rpx rgba(0, 0, 0, 0.2);
+	transform: rotate(-3deg);
+	z-index: -1;
+}
+
+.shadow-warp:after {
+	right: 20rpx;
+	left: auto;
+	transform: rotate(3deg);
+}
+.text-indent{
+  text-indent: 20rpx;
+}
+.margin-left-xs {
+	margin-left: 10rpx;
+}

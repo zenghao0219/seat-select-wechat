@@ -1,0 +1,20 @@
+  <view class="section" style='background: {{background}};'>
+      <view class="statusbar" style='height:{{statusBarHeight}}px'></view>
+      <view class="capsulebar">
+          <view  wx:if="{{needBack}}" class='back'>
+          <block wx:if="{{titleColor=='white'}}">
+            <image  src='/images/back.png' bindtap='back'/>
+          </block>
+          <block wx:else>
+            <image  src='/images/backBlack.png' bindtap='back'/>
+          </block>
+          </view>
+          <view class='title'>
+            <view class='title-text' style='color:{{titleColor}}'>{{title}}</view>
+          </view>
+      </view>
+  </view>
+  <view  wx:if="{{needHeight}}" class="reflash">
+    <view class="statusbar-two" style='height:{{statusBarHeight}}px'></view>
+    <view class="capsulebar-two"></view>
+  </view>

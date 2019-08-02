@@ -1,0 +1,32 @@
+<!--pages/mine/mine.wxml-->
+<head-view title="" needBack="{{true}}" needHeight="{{fasle}}" background=""></head-view>
+
+<view class='bg-view'>
+  <image class="icon-view" src="/images/icon.png"></image>
+  <text class='icon-text'>seat-select (小程序版)</text>
+</view>
+
+<view class="item">
+  <view class="content" bindtap="CopyLink" data-link="3544395">
+    <text class="cuIcon-writefill text-cyan"></text>
+    <text class="text-grey margin-left-xs">项目交流 点击复制qq群号:3544395</text>
+  </view>
+</view>
+<view class="item">
+  <view class="content" bindtap="CopyLink" data-link="https://github.com/zenghao0219/seat-select">
+        <text class="cuIcon-github text-grey"></text>
+        <text class="text-grey margin-left-xs">作者的GitHub</text>
+      </view>
+</view>
+<view class="item">
+  <view class="content" bindtap="CopyLink" data-link="https://github.com/zenghao0219/seat-select">
+        <text class="cuIcon-more text-grey"></text>
+        <text class="text-grey margin-left-xs">更多: h5移动端版本</text>
+      </view>
+</view>
+<view class="item">
+  <view class="content" bindtap="CopyLink" data-link="https://github.com/zenghao0219/seat-select">
+        <text class="cuIcon-more text-grey"></text>
+        <text class="text-grey margin-left-xs">更多: pc后台管理端</text>
+      </view>
+</view>

@@ -1,0 +1,21 @@
+.statusbar {width:100%}
+.capsulebar{width:100%;height: 90rpx;text-align: center;line-height:90rpx;color: white;font-size: 30rpx;display: flex;position: relative;align-items: center}
+.statusbar-two {width:100%;}
+.capsulebar-two{width:100%;height: 90rpx;}
+.section{width:100%;position: fixed;top: 0rpx;z-index: 1000;}
+.back{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 2%;
+  top: 5%;
+}
+.back>image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.title{width: 100%;display: flex;justify-content:center;align-items: center;}
+.title-text{
+  width: 57%;font-weight: 600;font-size: 36rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+}

@@ -1,6 +1,5 @@
 {
   "component": true,
   "usingComponents": {},
-  "disableScroll": true,
-  "navigationBarTitleText": "seat-select示例"
+  "disableScroll": true
 }

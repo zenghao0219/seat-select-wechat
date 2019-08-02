@@ -1,0 +1,36 @@
+/* pages/mine/mine.wxss */
+page{
+  background: rgba(248, 248, 248, 1);
+}
+.bg-view{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 310rpx;
+  width: 100%;
+  background:url('https://i.postimg.cc/pLTDF2my/bg.png') 100% no-repeat;
+  background-size:cover;
+}
+.icon-view{
+  margin-top: 50rpx;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+}
+.icon-text{
+  margin-top:20rpx;
+  font-weight: bold; 
+  color: white;
+  font-size: 36rpx;
+}
+.item{
+  width: 700rpx;
+  line-height: 60rpx;
+  margin: 30rpx auto;
+  background: white;
+  box-sizing: border-box;
+  padding: 20rpx 40rpx;
+  border-radius:15rpx; 
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.1);
+}

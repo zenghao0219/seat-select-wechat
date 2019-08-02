@@ -1,10 +1,14 @@
 /*
-*@zenghao 2018-06-12
-*/
+ *@zenghao 2018-06-12
+ */
 var jsonData = require('../../data/json.js');
 const app = getApp()
 Page({
-
+  about(){
+    wx.navigateTo({
+      url: '/pages/about/about',
+    })
+  },
   /**
    * 页面的初始数据
    */
@@ -16,81 +20,81 @@ Page({
     hallName: undefined,
     scaleValue: 1,
     hidden: "hidden",
-    maxSelect:4,
-    totalPrice:0,
-    loadComplete:false,
-    timer:null
+    maxSelect: 4,
+    totalPrice: 0,
+    loadComplete: false,
+    timer: null
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function() {
     let that = this;
     that.setData({
       seatArea: getApp().globalData.screenHeight - getApp().globalData.statusBarHeight - (500 * getApp().globalData.screenWidth / 750),
-      rpxToPx: getApp().globalData.screenWidth/750
+      rpxToPx: getApp().globalData.screenWidth / 750
     });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     wx.showLoading({
       title: '加载中',
     })
     var that = this;
     //---这此替换成自己的接口请求成功后--start--
     let result = jsonData.dataList;
-      wx.hideLoading();
-      if (result.errorCode == 0) {
-        let seatList = that.prosessSeatList(result);
-        that.setData({
-          movieName: result.movieName,
-          planDetail: result.showTime,
-          hallName: result.name,
-          seatList: seatList,
-          seatTypeList: result.seatTypeList,
-          selectedSeat: [],
-          totalPrice: 0,
-          hidden: "hidden",
-          seatArea: this.data.seatArea
-        });
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 1000)
-        //计算X和Y坐标最大值
-        that.prosessMaxSeat(seatList);
-        //计算左侧座位栏的数组
-        that.seatToolArr()
-        //按每排生成座位数组对象
-        that.creatSeatMap()
-        //确认最佳坐标座位
-        that.creatBestSeat()
-      } else {
+    wx.hideLoading();
+    if (result.errorCode == 0) {
+      let seatList = that.prosessSeatList(result);
+      that.setData({
+        movieName: result.movieName,
+        planDetail: result.showTime,
+        hallName: result.name,
+        seatList: seatList,
+        seatTypeList: result.seatTypeList,
+        selectedSeat: [],
+        totalPrice: 0,
+        hidden: "hidden",
+        seatArea: this.data.seatArea
+      });
+      setTimeout(function() {
         wx.hideLoading()
-          wx.showToast({
-          title: '获取座位图失败',
-          icon: 'none',
-          duration: 2000
+      }, 1000)
+      //计算X和Y坐标最大值
+      that.prosessMaxSeat(seatList);
+      //计算左侧座位栏的数组
+      that.seatToolArr()
+      //按每排生成座位数组对象
+      that.creatSeatMap()
+      //确认最佳坐标座位
+      that.creatBestSeat()
+    } else {
+      wx.hideLoading()
+      wx.showToast({
+        title: '获取座位图失败',
+        icon: 'none',
+        duration: 2000
+      })
+      setTimeout(function() {
+        wx.navigateBack({
+          delta: 1, // 回退前 delta(默认为1) 页面
         })
-          setTimeout(function() {
-          wx.navigateBack({
-            delta: 1, // 回退前 delta(默认为1) 页面
-          })
-        }, 1000)
-        }
-      //---这此替换成自己的接口请求成功后--end--
+      }, 1000)
+    }
+    //---这此替换成自己的接口请求成功后--end--
   },
   //解决官方bug
-  handleScale: function (e) {
+  handleScale: function(e) {
     if (this.data.timer) {
       clearTimeout(this.data.timer)
     }
@@ -103,20 +107,20 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
   /**
    * 顶级顶部返回按钮时候
    */
-  prosessSeatList: function (response) {
+  prosessSeatList: function(response) {
     let resSeatList = response.seatList
     resSeatList.forEach(element => {
       // 获取座位的类型的首字母
@@ -175,7 +179,7 @@ Page({
     return resSeatList
   },
   //计算最大座位数,生成影厅图大小
-  prosessMaxSeat:function(value){
+  prosessMaxSeat: function(value) {
     let seatList = value
     let maxY = 0;
     for (let i = 0; i < seatList.length; i++) {
@@ -196,30 +200,33 @@ Page({
     let seatScale = 1;
     let seatScaleX = 1;
     let seatScaleY = 1;
-    let seatAreaWidth =630 * this.data.rpxToPx
-    let seatAreaHeight = this.data.seatArea -  200 * this.data.rpxToPx
-    if (seatRealWidth > seatAreaWidth){
-      seatScaleX = seatAreaWidth / seatRealWidth 
+    let seatAreaWidth = 630 * this.data.rpxToPx
+    let seatAreaHeight = this.data.seatArea - 200 * this.data.rpxToPx
+    if (seatRealWidth > seatAreaWidth) {
+      seatScaleX = seatAreaWidth / seatRealWidth
     }
     if (seatRealheight > seatAreaHeight) {
       seatScaleY = seatAreaHeight / seatRealheight
     }
-    if (seatScaleX < 1 || seatScaleY < 1 ){
+    if (seatScaleX < 1 || seatScaleY < 1) {
       seatScale = seatScaleX < seatScaleY ? seatScaleX : seatScaleY
     }
     this.setData({
-      maxY: parseInt(maxY), maxX: parseInt(maxX), seatScale: seatScale, seatScaleHeight: seatScale * 70 * this.data.rpxToPx
+      maxY: parseInt(maxY),
+      maxX: parseInt(maxX),
+      seatScale: seatScale,
+      seatScaleHeight: seatScale * 70 * this.data.rpxToPx
     });
   },
   // 座位左边栏的数组
-  seatToolArr: function () {
+  seatToolArr: function() {
     let seatToolArr = []
     let yMax = this.data.maxY
     let seatList = this.data.seatList
     for (let i = 1; i <= yMax; i++) {
       let el = ''
       for (let j = 0; j < seatList.length; j++) {
-        if (parseInt(seatList[j].gRow) === i){
+        if (parseInt(seatList[j].gRow) === i) {
           el = seatList[j].row
         }
       }
@@ -229,13 +236,13 @@ Page({
       seatToolArr: seatToolArr
     })
   },
-  back: function () {
+  back: function() {
     wx.navigateBack({
       delta: 1, // 回退前 delta(默认为1) 页面
     })
   },
   // 点击每个座位触发的函数
-  clickSeat: function (event) {
+  clickSeat: function(event) {
     let index = event.currentTarget.dataset.index;
     if (this.data.seatList[index].canClick) {
       if (this.data.seatList[index].nowIcon === this.data.seatList[index].selectedIcon) {
@@ -261,7 +268,7 @@ Page({
     })
   },
   // 处理已选的座位
-  processSelected: function (index) {
+  processSelected: function(index) {
     let _selectedSeatList = this.data.selectedSeat
     let seatList = this.data.seatList
     let otherLoveSeatIndex = seatList[index].otherLoveSeatIndex
@@ -297,7 +304,7 @@ Page({
     })
   },
   // 处理未选择的座位
-  processUnSelected: function (index) {
+  processUnSelected: function(index) {
     let _selectedSeatList = this.data.selectedSeat
     let seatList = this.data.seatList
     let otherLoveSeatIndex = seatList[index].otherLoveSeatIndex
@@ -318,15 +325,17 @@ Page({
       seatList[index].orgIndex = index
       seatList[otherLoveSeatIndex].orgIndex = otherLoveSeatIndex
       // 把选择的座位放入到已选座位数组中
-      let temp = { ...seatList[index] }
-      let tempLove = { ...seatList[otherLoveSeatIndex] }
+      let temp = { ...seatList[index]
+      }
+      let tempLove = { ...seatList[otherLoveSeatIndex]
+      }
       _selectedSeatList.push(temp)
       _selectedSeatList.push(tempLove)
     } else {
       // 如果选中的是非情侣座位 判断选择个数不大于 maxSelect
       if (_selectedSeatList.length >= this.data.maxSelect) {
         wx.showToast({
-          title: '最多只能选择' + this.data.maxSelect+'个座位哦~',
+          title: '最多只能选择' + this.data.maxSelect + '个座位哦~',
           icon: 'none',
           duration: 2000
         })
@@ -337,7 +346,8 @@ Page({
       // 记录 orgIndex属性 是原seatList数组中的下标值
       seatList[index].orgIndex = index
       // 把选择的座位放入到已选座位数组中
-      let temp = { ...seatList[index] }
+      let temp = { ...seatList[index]
+      }
       _selectedSeatList.push(temp)
     }
     this.setData({
@@ -347,46 +357,46 @@ Page({
     })
   },
   confirmHandle: function() {
-    let that =this
+    let that = this
     let _this = this.data
-      if (_this.selectedSeat.length === 0) {
+    if (_this.selectedSeat.length === 0) {
+      wx.showToast({
+        title: '请至少选择一个座位~',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+    // 开始计算是否留下空位 ------------ 开始
+    let result = _this.selectedSeat.every(function(element, index, array) {
+      return that.checkSeat(element, _this.selectedSeat)
+    })
+    // 开始计算是否留下空位 ------------ 结束
+    if (!result) {
+      // 如果 result 为false
+      wx.showToast({
+        title: '请不要留下空位~',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      if (_this.totalPrice === 0) {
         wx.showToast({
-          title: '请至少选择一个座位~',
+          title: '锁座失败了~,金额为0',
           icon: 'none',
           duration: 2000
         })
         return
       }
-      // 开始计算是否留下空位 ------------ 开始
-      let result = _this.selectedSeat.every(function (element, index, array) {
-        return that.checkSeat(element, _this.selectedSeat)
+      // 允许锁座
+      wx.showLoading({
+        title: '加载中',
       })
-      // 开始计算是否留下空位 ------------ 结束
-      if (!result) {
-        // 如果 result 为false
-        wx.showToast({
-          title: '请不要留下空位~',
-          icon: 'none',
-          duration: 2000
-        })
-      } else {
-        if (_this.totalPrice === 0) {
-          wx.showToast({
-            title: '锁座失败了~,金额为0',
-            icon: 'none',
-            duration: 2000
-          })
-          return
-        }
-        // 允许锁座
-        wx.showLoading({
-          title: '加载中',
-        })
-        that.createOrder()
-      }
+      that.createOrder()
+    }
   },
   // 检查每个座位是否会留下空位
-  checkSeat: function (element, selectedSeat) {
+  checkSeat: function(element, selectedSeat) {
     // 标准为 1.左右侧都必须保留 两格座位 + 最大顺延座位(也就是已选座位减去自身)
     // 2.靠墙和靠已售的座位一律直接通过
     const checkNum = 2 + selectedSeat.length - 1
@@ -418,18 +428,18 @@ Page({
     return true
   },
   // 检查左右侧座位满足规则状态
-  checkSeatDirection: function (gRowBasic, gColBasic, checkNum, direction, selectedSeat) {
+  checkSeatDirection: function(gRowBasic, gColBasic, checkNum, direction, selectedSeat) {
     // 空位个数
     let emptySeat = 0
     let x = 1 // 检查位置 只允许在x的位置出现过道,已售,维修
     for (let i = 1; i <= checkNum; i++) {
       let iter // 根据 gRow gCol direction 找出检查座位左边按顺序排列的checkNum
       if (direction === '-') {
-        iter = this.data.seatList.find(function (el) {
+        iter = this.data.seatList.find(function(el) {
           return el.gRow === gRowBasic && el.gCol === gColBasic - i
         })
       } else if (direction === '+') {
-        iter = this.data.seatList.find(function (el) {
+        iter = this.data.seatList.find(function(el) {
           return el.gRow === gRowBasic && el.gCol === gColBasic + i
         })
       }
@@ -478,15 +488,15 @@ Page({
     }
   },
   /**
-  * 用户点击右上角分享
-  */
-  onShareAppMessage: function () {
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
     return app.globalData.share;
   },
   /**
-  * 点击确认选择开始生成订单
-  */
-  createOrder: function () {
+   * 点击确认选择开始生成订单
+   */
+  createOrder: function() {
     let _this = this.data
     var seatIds = [];
     let selectSeatInfo = _this.selectedSeat;
@@ -504,7 +514,7 @@ Page({
     return
   },
   //生成最佳座位
-  creatBestSeat: function () {
+  creatBestSeat: function() {
     // 优先左侧
     var bestX = parseInt(this.data.maxX / 2) + 1
     // 四舍五入  0.618为黄金分割比例
@@ -512,11 +522,11 @@ Page({
     this.setData({
       bestX: bestX,
       bestY: bestY,
-      loadComplete:true
+      loadComplete: true
     })
   },
   // 根据seatList 生成一个类map的对象 key值为gRow坐标 value值为gRow为key值的数组
-  creatSeatMap: function () {
+  creatSeatMap: function() {
     let seatList = this.data.seatList
     var obj = {}
     for (let index in seatList) {
@@ -538,7 +548,7 @@ Page({
     })
   },
   // 快速选择座位函数
-  quickSeat: function (event) {
+  quickSeat: function(event) {
     let value = parseInt(event.currentTarget.dataset.num);
     let _self = this.data
     let that = this
@@ -568,7 +578,7 @@ Page({
     }
     let bestSeatListIndex = 0
     // 递归每排的最优座位组 找出离中心点最近的最优座位组
-    bestSeatList.reduce(function (prev, cur, index, arr) {
+    bestSeatList.reduce(function(prev, cur, index, arr) {
       if (Array.isArray(prev)) {
         // 取中心点离 最好坐标 绝对值
         let n = Math.abs((prev[0].gCol + prev[value - 1].gCol) / 2 - _self.bestX)
@@ -619,7 +629,7 @@ Page({
     })
   },
   // 找寻每排的最佳座位数组
-  seachBestSeatByRow: function (rowSeatList, value) {
+  seachBestSeatByRow: function(rowSeatList, value) {
     let effectiveSeatLeft = []
     let effectiveSeatRight = []
     let effectiveSeatMiddle = []
@@ -648,7 +658,7 @@ Page({
     }
   },
   // 找到次排是否有快速选择座位数有效的数组 寻找的坐标为 最佳座位根据快速选择座位数 取左右两边正负座位数
-  checkSeatMiddle: function (rowSeatList, value) {
+  checkSeatMiddle: function(rowSeatList, value) {
     let effectiveSeat = []
     let existLoveSeat = false
     // 从负到整的值动态值
@@ -712,7 +722,7 @@ Page({
     return effectiveSeat
   },
   // 找到次排是否有快速选择座位数有效的数组
-  checkSeatWithDirection: function (rowSeatList, value, direction) {
+  checkSeatWithDirection: function(rowSeatList, value, direction) {
     let activeValue = value
     // 最多允许过道等于3 由于某些影厅 居中的位置不是座位 存在大部分的过道 导致无法选择到最佳座位
     let roadDistance = 3
@@ -763,7 +773,7 @@ Page({
     }
     return effectiveSeat
   },
-  checkLoveSeatIsDouble: function (arr) {
+  checkLoveSeatIsDouble: function(arr) {
     // 检查数组内必须情侣座是否对出现 否则舍弃
     var orgSet = new Set()
     var loveSeatSet = new Set()
@@ -783,7 +793,7 @@ Page({
   preCheckSeatMakeEmpty(arr) {
     let that = this
     // 开始计算是否留下空位 ------------ 开始
-    let result = arr.every(function (element, index, array) {
+    let result = arr.every(function(element, index, array) {
       return that.checkSeat(element, arr)
     })
     // 开始计算是否留下空位 ------------ 结束
