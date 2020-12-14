@@ -27,7 +27,7 @@ if this project is useful to you :D , Please star this project~
 
 <img src="https://github.com/zenghao0219/files-store/blob/master/seats/gh_29060d58fbac_430.jpg?raw=true" width="200" hegiht="300"/>
 
-> 此次项目是基于vue编写的类似淘票票和猫眼的电影`移动端`锁座页面,经过超过百个影厅的测试,其中包含功能
+> 此次项目是基于小程序原生代码编写的类似淘票票和猫眼的电影`移动端`锁座页面,经过超过百个影厅的测试,其中包含功能
 >
 > - 座位图生成
 > - 座位预览图生成
